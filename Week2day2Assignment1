@@ -1,0 +1,53 @@
+package maven;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+		public class Week2Day2Assignment1 {
+		public static void main (String[]args) {
+	//chrome driver setup//
+			WebDriverManager.chromedriver().setup();
+			ChromeDriver driver=new ChromeDriver();
+	//load the url of facebook//
+			driver.get("https://en-gb.facebook.com/");
+	//maximize the chrome window//
+			driver.manage().window().maximize();
+	//adding the implicit Wait//
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	//creating the New Account Button//
+			WebElement elementusername=driver.findElement(By.linkText("Create New Account"));
+			elementusername.click();
+	//entering the firstname//
+			WebElement firstname=driver.findElement(By.name("firstname"));
+			firstname.sendKeys("Verlin");
+	//entering the lastname//
+			WebElement lastnamename=driver.findElement(By.name("lastname"));
+			lastnamename.sendKeys("mary");
+	//entering the mobile number//
+			WebElement mobilenumber=driver.findElement(By.name("reg_email__"));
+			mobilenumber.sendKeys("9952445079");
+	//entering the password//
+			WebElement password=driver.findElement(By.id("password_step_input"));
+			password.sendKeys("Veronica@18");
+	//handle the dropdowns//
+			WebElement source=driver.findElement(By.id("day"));
+		    Select s1=new Select(source);
+		    s1.selectByVisibleText("18");
+		    WebElement source1=driver.findElement(By.id("month"));
+		    Select s2=new Select(source1);
+		    s2.selectByVisibleText("Nov");
+		    WebElement source2=driver.findElement(By.id("year"));
+		    Select s3=new Select(source2);
+		    s3.selectByVisibleText("1994");
+	//select the radio button female//
+		    WebElement gender=driver.findElement(By.name("sex"));
+		    gender.sendKeys("Female");
+		    
+		}
+		}
